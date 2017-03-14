@@ -23,6 +23,10 @@ $statement = $pdo->query("SELECT title, performer, date, startTime
 	ORDER BY title");
 $resultatExo6 = $statement->fetchAll();
 
+$statement = $pdo->query("SELECT *
+	FROM clients");
+$resultatExo7 = $statement->fetchAll();
+
 $pdo = null;
 ?>
 <!DOCTYPE html>
@@ -119,6 +123,18 @@ Voir tableau 1
 
 <h2>Exo 7</h2>
 
+<?php foreach ($resultatExo7 as $value) : ?>
+
+<p><u>Nom</u> <?= $value->lastName; ?> <u>Prénom</u> <?= $value->firstName; ?> , <u>Date de Naissance</u> <?= $value->birthDate; ?> <u>Carte de fidélité</u> <?= $value->card; ?></p>
+
+<?php if($value->card===0){
+	echo "non";
+}else{
+	echo "Oui numéro de la carte : '.$value->cardNumber.'";
+}
+?>
+
+<?php endforeach; ?>
 
 </body>
 </html>
