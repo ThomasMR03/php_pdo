@@ -10,6 +10,14 @@ $statement = $pdo -> query("SELECT showTypes.type, genres.genre AS firstGenres, 
 	WHERE showTypes.id = genres.showTypesId AND showTypes.id = secGenres.showTypesId");
 $resultatExo2 = $statement -> fetchAll();
 
+$statement = $pdo->query("SELECT lastName, firstName
+	FROM clients
+	WHERE lastName
+	LIKE 'M%'
+	ORDER BY lastName");
+
+$resultatExo5 = $statement->fetchAll();
+
 $pdo = null;
 ?>
 <!DOCTYPE html>
@@ -88,6 +96,13 @@ endforeach;
 
 Voir tableau 1
 
+<h2>Exo 5</h2>
+
+<?php foreach ($resultatExo5 as $value) : ?>
+
+<p><u>Nom : </u> <?= $value->lastName; ?> <u>Prénom : </u> <?= $value->firstName; ?></p>
+
+<?php endforeach; ?>
 
 </body>
 </html>
