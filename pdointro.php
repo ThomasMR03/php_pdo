@@ -3,7 +3,12 @@ $pdo = new PDO('mysql:host=localhost;dbname=colyseum;charsert=utf8', 'root', '')
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $statement = $pdo -> query ('SELECT * FROM clients');
-$resultat = $statement -> fetchAll();
+$resultatExo1 = $statement -> fetchAll();
+
+$statement = $pdo -> query('SELECT * FROM showTypes');
+$resultatExo2 = $statement -> fetchAll();
+
+$pdo = null;
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +33,7 @@ $resultat = $statement -> fetchAll();
 </thead>
 <tbody>
 <?php
-foreach ($resultat as $value) : 
+foreach ($resultatExo1 as $value) : 
 ?>
 <tr>
 	<td><?= $value->id; ?></td>
@@ -47,5 +52,25 @@ endforeach;
 <h2>Exo 2</h2>
 
 <!-- Afficher tous les types de spectacles possibles -->
+<table>
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Genre</th>
+</tr>
+</thead>
+<tbody>
+<?php
+foreach ($resultatExo2 as $value) : 
+?>
+<tr>
+	<td><?= $value->id; ?></td>
+	<td><?= $value->type; ?></td>
+</tr>
+<?php
+endforeach;
+?>
+</tbody>
+</table>
 </body>
 </html>
