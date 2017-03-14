@@ -5,7 +5,7 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $statement = $pdo -> query ('SELECT * FROM clients');
 $resultatExo1 = $statement -> fetchAll();
 
-$statement = $pdo -> query('SELECT * FROM showTypes');
+$statement = $pdo -> query('SELECT type, genre FROM showTypes, genres WHERE showTypes.id = genres.showTypesId');
 $resultatExo2 = $statement -> fetchAll();
 
 $pdo = null;
@@ -14,6 +14,7 @@ $pdo = null;
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<meta charset="utf-8">
 	<title>Exo Pdo</title>
 </head>
 <body>
@@ -64,8 +65,8 @@ endforeach;
 foreach ($resultatExo2 as $value) : 
 ?>
 <tr>
-	<td><?= $value->id; ?></td>
 	<td><?= $value->type; ?></td>
+	<td><?= $value->genre; ?></td>
 </tr>
 <?php
 endforeach;
