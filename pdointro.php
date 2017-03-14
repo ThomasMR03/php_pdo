@@ -14,6 +14,8 @@ $resultat = $statement -> fetchAll();
 <h2>Exo 1</h2>
 
 <!-- Afficher tous les clients -->
+<table>
+<thead>
 <tr>
 	<th>ID</th>
 	<th>Nom</th>
@@ -22,14 +24,24 @@ $resultat = $statement -> fetchAll();
 	<th>Card</th>
 	<th>Numéro de carte</th>
 </tr>
+</thead>
+<tbody>
+<?php
+foreach ($resultat as $value) : 
+?>
 <tr>
-	<td>Contenu interne 1</td>
-	<td>Contenu interne 2</td>
-	<td>Contenu interne 3</td>
-	<td>Contenu interne 4</td>
-	<td>Contenu interne 5</td>
-	<td>Contenu interne 6</td>
+	<td><?= $value->id; ?></td>
+	<td><?= $value->firstName; ?></td>
+	<td><?= $value->lastName; ?></td>
+	<td><?= $value->birthDate; ?></td>
+	<td><?= $value->card; ?></td>
+	<td><?= $value->cardNumber; ?></td>
 </tr>
+<?php
+endforeach;
+?>
+</tbody>
+</table>
 
 </body>
 </html>
