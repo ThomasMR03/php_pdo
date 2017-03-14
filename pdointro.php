@@ -18,6 +18,10 @@ $statement = $pdo->query("SELECT lastName, firstName
 
 $resultatExo5 = $statement->fetchAll();
 
+$statement = $pdo->query("SELECT title, performer, date, startTime
+	FROM shows");
+$resultatExo6 = $statement->fetchAll();
+
 $pdo = null;
 ?>
 <!DOCTYPE html>
@@ -104,5 +108,12 @@ Voir tableau 1
 
 <?php endforeach; ?>
 
+<h2>Exo 6</h2>
+
+<?php foreach ($resultatExo6 as $value) : ?>
+
+<p><u>Spectacle </u> <?= $value->title; ?> par <u>Artiste </u> <?= $value->performer; ?> , le <u>Date</u> <?= $value->date; ?> à <u>Heure</u> <?= $value->startTime; ?></p>
+
+<?php endforeach; ?>
 </body>
 </html>
