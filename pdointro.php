@@ -8,6 +8,7 @@ $resultat = $statement -> fetchAll();
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Exo Pdo</title>
 </head>
 <body>
@@ -43,5 +44,8 @@ endforeach;
 </tbody>
 </table>
 
+<h2>Exo 2</h2>
+
+<!-- Afficher tous les types de spectacles possibles -->
 </body>
 </html>
