@@ -5,7 +5,9 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 $statement = $pdo -> query ('SELECT * FROM clients');
 $resultatExo1 = $statement -> fetchAll();
 
-$statement = $pdo -> query('SELECT showTypes.type, genres.genre FROM showTypes, genres WHERE showTypes.id = genres.showTypesId');
+$statement = $pdo -> query("SELECT showTypes.type, genres.genre AS firstGenres, secGenres.genre AS secGenre
+	FROM showTypes, genres, genres AS secGenres
+	WHERE showTypes.id = genres.showTypesId AND showTypes.id = secGenres.showTypesId");
 $resultatExo2 = $statement -> fetchAll();
 
 $pdo = null;
@@ -14,6 +16,7 @@ $pdo = null;
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <meta charset="utf-8">
 	<title>Exo Pdo</title>
 </head>
@@ -66,8 +69,8 @@ foreach ($resultatExo2 as $value) :
 ?>
 <tr>
 	<td><?= $value->type; ?></td>
-	<td><?= $value->genre; ?></td>
-	<td>Cat 2</td>
+	<td><?= $value->firstGenres; ?></td>
+	<td><?= $value->secGenre ?></td>
 </tr>
 <?php
 endforeach;

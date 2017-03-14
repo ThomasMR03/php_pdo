@@ -4,3 +4,7 @@ th, td {
 table {
 	border: solid 2px black;
 }
+
+body {
+	font-family: 'Indie Flower', cursive; 
+}
