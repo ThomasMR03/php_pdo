@@ -2,7 +2,7 @@
 $pdo = new PDO('mysql:host=localhost;dbname=colyseum;charsert=utf8', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-$statement = $pdo -> query ('SELECT * FROM clients LIMIT 0, 20');
+$statement = $pdo -> query ('SELECT * FROM clients WHERE card = 1');
 $resultatExo1 = $statement -> fetchAll();
 
 $statement = $pdo -> query("SELECT showTypes.type, genres.genre AS firstGenres, secGenres.genre AS secGenre
@@ -81,7 +81,13 @@ endforeach;
 <h2>Exo 3</h2>
 
 <!-- Afficher les 20 premiers clients -->
-Voir exo 1 (Tableau)
+<!-- LIMIT 0, 20 -->
+
+
+<h2>Exo 4</h2>
+
+Voir tableau 1
+
 
 </body>
 </html>
