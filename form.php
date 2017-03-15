@@ -2,6 +2,9 @@
 $pdo = new PDO('mysql:host=localhost;dbname=colyseum;charsert=utf8', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+$statement = $pdo ->query('SELECT id, type FROM cardTypes');
+$typedecarte = $statement->fetchAll();
 ?>
 
 <?php
@@ -69,7 +72,8 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 </head>
 <body>
 
-<a href="index.php"><< Index PHP</a>
+<a href="index.php"><< Index PHP</a> </br>
+<a href="exo.php"><< Exercice</a>
 
 <!-- Le corps -->
 
@@ -103,9 +107,16 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 						<input type="text" name="nom" placeholder="Nom"> </br>
 						<input type="text" name="prenom" placeholder="Prénom"> </br>
 						<input type="date" name="naissance"> </br>
-						<label for="card">Le client a t'il une carte de fidélité ?</label>
+						<label for="card">Le client veut-il une carte de fidélité ?</label>
 						<input type="checkbox" name="card"> </br>
-						<input type="number" name="numeCard" placeholder="Numéro de la carte"> 
+						<input type="number" name="numeCard" placeholder="Numéro de la carte"> </br>
+						<select name="typeCarte">
+							<?php foreach ($typedecarte as $key => $value) {
+								echo '<option valeur="'.$value->id.'">'.$value->type.'</option>';
+							}
+							?>
+						</select>
+						<input type="submit" class="btn btn-danger" value="Envoyer" />
 					</form>
 				</div> 
             </div>

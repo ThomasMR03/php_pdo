@@ -40,7 +40,9 @@ $pdo = null;
 </head>
 <body>
 
-<a href="form.php">Formulaire PHP >></a>
+<a href="form.php">Formulaire PHP >></a> </br>
+<a href="exo.php">Exercice >></a>
+
 
 <h2>Exo 1</h2>
 
