@@ -32,8 +32,30 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
  		}
  	}else{
  		$card = 0;
+ 		$numeCard = null;
  	}
- 	echo "Post effecuté !";
+
+ 	if (empty($erreur)) {
+ 		$pdo = new PDO('mysql:host=localhost;dbname=colyseum;charsert=utf8', 'root', '');
+ 		$pdo->setAttribute(
+ 			PDO::ATTR_ERRMODE,
+ 			PDO::ERRMODE_EXCEPTION);
+ 		$pdo->setAttribute(
+ 			PDO::ATTR_DEFAULT_FETCH_MODE,
+ 			PDO::FETCH_OBJ);
+
+ 		$statement = $pdo->prepare("
+ 			INSERT INTO clients
+ 			SET lastName = ?,
+ 			firstName = ?,
+ 			birthdayDate = ?,
+ 			card = ?,
+ 			cardNumber = ?
+ 			");
+ 		$statement->execute([$nom, $prenom, $naissance, $card, $numeCard]);
+
+ 		$erreur[] = "Le client est bien ajouté !";
+ 	}
  }
 ?>
 <!DOCTYPE html>
