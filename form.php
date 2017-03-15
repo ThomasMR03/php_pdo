@@ -7,7 +7,7 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 <?php
  if (isset($_POST) $$ !empty($_POST)) {
  	$erreur = [];
- 	
+
  	if (isset($_POST['nom']) && $_POST['nom']==''){
  		$nom = $_POST['nom'];
  	}else{
@@ -43,6 +43,11 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 </head>
 <body>
 <h1>Ajout de client</h1>
+
+<?php foreach ($erreur as $value) {
+	echo $value;
+}
+?>
 
 <form method="post" action="">
 	<input type="text" name="nom" placeholder="Nom">
