@@ -8,3 +8,19 @@ table {
 body {
 	font-family: 'Indie Flower', cursive; 
 }
+
+h1 {
+	color: red;
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+}
+
+#form {
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+}
+
+form {
+	border: 2px solid red;
+	font-family: 'Indie Flower', cursive;
+}

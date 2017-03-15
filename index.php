@@ -30,14 +30,18 @@ $resultatExo7 = $statement->fetchAll();
 $pdo = null;
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 <meta charset="utf-8">
 	<title>Exo Pdo</title>
 </head>
 <body>
+
+<a href="form.php">Formulaire PHP >></a>
+
 <h2>Exo 1</h2>
 
 <!-- Afficher tous les clients -->
