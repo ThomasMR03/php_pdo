@@ -7,32 +7,32 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 <?php
 	$erreur = [];
  if (isset($_POST) && !empty($_POST)) {
-
+ 	$donne=[];
  	if (isset($_POST['nom']) && $_POST['nom']==''){
- 		$nom = $_POST['nom'];
+ 		$donne['lastName'] = $_POST['nom'];
  	}else{
  		$erreur[] = "Merci de mettre un nom";
  	}
  	if (isset($_POST['prenom']) && $_POST['prenom']=='') {
- 		$nom = $_POST['prenom'];
+ 		$donne['firstName'] = $_POST['prenom'];
  	}else{
  		$erreur[] = "Merci de mettre un prénom";
  	}
  	if (isset($_POST['naissance'])) {
- 		$nom = $_POST['naissance'];
+ 		$donne['birthdayDate'] = $_POST['naissance'];
  	}else{
  		$erreur[] = "Merci de mettre votre date de naissance";
  	}
  	if (isset($_POST['card'])) {
- 		$card = 1;
+ 		$donne['card'] = 1;
  		if (isset($_POST['numeCard'])) {
- 			$numeCard = $_POST['numeCard'];
+ 			$donne['cardNumber'] = $_POST['numeCard'];
  		}else{
  			$erreur[] = "Merci de mettre un numéro de carte";
  		}
  	}else{
- 		$card = 0;
- 		$numeCard = null;
+ 		$donne['card'] = 0;
+ 		$donne['cardNumber'] = null;
  	}
 
  	if (empty($erreur)) {
@@ -46,11 +46,11 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
  		$statement = $pdo->prepare("
  			INSERT INTO clients
- 			SET lastName = ?,
- 			firstName = ?,
- 			birthdayDate = ?,
- 			card = ?,
- 			cardNumber = ?
+ 			SET lastName = :lastName,
+ 			firstName = :firstName,
+ 			birthdayDate = :birthdayDate,
+ 			card = :card,
+ 			cardNumber = :cardNumber
  			");
  		$statement->execute([$nom, $prenom, $naissance, $card, $numeCard]);
 
